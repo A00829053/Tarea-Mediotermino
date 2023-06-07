@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package grpcWrapper;
+
+option go_package = "example.com/rest-gateway-demo/protos";
+import "google/api/annotations.proto";
+
+service RPCDemo {
+    rpc GetMultCoords(google.protobuf.Empty) returns (MultCoord) {
+        option(google.api.http) = {
+            post: "/v1/echoPosition"
+            body: "*"
+        };
+    }
+}
+
+message MultCoord {
+    repeated double values = 1 [packed=true];
+}

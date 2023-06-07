@@ -1,0 +1,14 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package rpc2Pkg;
+
+option csharp_namespace = "rpc2";
+
+service RPCDemo {
+    rpc GetMultCoords(google.protobuf.Empty) returns (MultCoord);
+}
+
+message MultCoord {
+    repeated double values = 1;
+}
